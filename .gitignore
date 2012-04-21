@@ -10,3 +10,7 @@
 *.lai
 *.la
 *.a
+
+# device files
+arm/
+x86/
