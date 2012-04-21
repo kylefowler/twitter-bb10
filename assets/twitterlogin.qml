@@ -18,11 +18,14 @@ Container {
 	    Button {
 	        id: loginButton
 	        objectName: "login"
-	        text: "Login"
+	        text: loginLayout.getLoginButtonText()
 	        layoutProperties: StackLayoutProperties {
 	            verticalAlignment: VerticalAlignment.Center
 	            horizontalAlignment: HorizontalAlignment.Center;
 	        }
+	        onClicked: {
+                 loginLayout.onButtonClicked();
+             }
 	    }
     }
 }

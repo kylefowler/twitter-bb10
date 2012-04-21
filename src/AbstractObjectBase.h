@@ -10,12 +10,15 @@
 
 #include <QtCore/QObject>
 #include <QtCore/QVariantMap>
+#include <QtCore/QVariantList>
 
-class AbstractObjectBase {
+class AbstractObjectBase : public QObject {
+	Q_OBJECT
 public:
 	AbstractObjectBase();
 	virtual ~AbstractObjectBase();
-	virtual void parse(QVariantMap);
+	virtual void parse(QVariantMap) =0;
+	virtual void parse(QVariantList) =0;
 };
 
 #endif /* ABSTRACTOBJECTBASE_H_ */

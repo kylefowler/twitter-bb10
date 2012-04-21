@@ -34,8 +34,12 @@ ApiResponseObjectFactory::ApiType ApiResponse::getType() {
 void ApiResponse::parse(QByteArray data) {
 	QString json(data);
 	bool ok;
-	QVariantMap resp = QtJson::Json::parse(json,ok).toMap();
-	if(response != NULL) {
-		response->parse(resp);
+	QVariant resp = QtJson::Json::parse(json,ok);
+	if(resp.canConvert(QVariant::List)) {
+		foreach(const QVariant &var, resp.toList()) {
+			qDebug() << var;
+		}
+	} else if(response != NULL && resp.canConvert(QVariant::Map)) {
+		response->parse(resp.toMap());
 	}
 }

@@ -33,15 +33,12 @@ class HomeLayout: public bb::cascades::CustomControl
 public:
 	HomeLayout(User*);
 	virtual ~HomeLayout();
+	Q_INVOKABLE void onTweetClicked(QString text);
 private:
-	Label *userName;
-	Button *logoutButton;
-	Button *tweetButton;
-	TextArea *tweetText;
 	User *user;
-private slots:
+public slots:
 	void onLogoutClicked();
-	void onTweetClicked();
+private slots:
 	void onTweetPosted(AbstractObjectBase*);
 };
 #endif /* HOMELAYOUT_H_ */

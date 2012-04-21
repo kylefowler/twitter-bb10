@@ -28,9 +28,30 @@ Container {
 	        preferredWidth: 500
 	        preferredHeight: 500
 	        Label {
-	            objectName: "userName"
 	            topMargin: 10; bottomMargin: 10;
 	            font: SystemFont.H2
+	            text: twitterUser.name
+	            textColor: Color.create("#ffffffff")
+	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	        }
+	        Label {
+	            topMargin: 10; bottomMargin: 10;
+	            font: SystemFont.H2
+	            text: twitterUser.screenName
+	            textColor: Color.create("#ffffffff")
+	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	        }
+	        Label {
+	            topMargin: 10; bottomMargin: 10;
+	            font: SystemFont.H2
+	            text: twitterUser.url
+	            textColor: Color.create("#ffffffff")
+	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	        }
+	        Label {
+	            topMargin: 10; bottomMargin: 10;
+	            font: SystemFont.H2
+	            text: twitterUser.location
 	            textColor: Color.create("#ffffffff")
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
@@ -38,6 +59,9 @@ Container {
 			    objectName: "logoutButton"
 			    text: "Logout"
 			    layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+			    onClicked: {
+			        homeView.onLogoutClicked()
+			    }
 	        }
 	    }
 	    
@@ -52,6 +76,7 @@ Container {
 	        preferredWidth: 500
 	        preferredHeight: 500
 	        TextArea {
+	            id: tweetText
 	            objectName: "tweetText"
 	            topMargin: 10; bottomMargin: 10;
 	            preferredWidth: 300;
@@ -60,9 +85,11 @@ Container {
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
 	        Button {
-			    objectName: "postTweetButton"
 			    text: "Tweet!"
 			    layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+			    onClicked: {
+			        homeView.onTweetClicked(tweetText.text)
+			    }
 	        }
 	    }
     }

@@ -48,8 +48,10 @@ public:
 	virtual ~LoginLayout();
     Button *loginButton;
     void makeLoginRequest();
-private slots:
+    Q_INVOKABLE QString getLoginButtonText();
+public slots:
 	void onButtonClicked();
+private slots:
 	void requestComplete(QNetworkReply*);
 	void onLoginResponse(bool);
 	void onUserDataLoad(AbstractObjectBase*);

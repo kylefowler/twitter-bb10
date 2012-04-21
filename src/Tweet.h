@@ -15,6 +15,7 @@ public:
 	Tweet();
 	virtual ~Tweet();
 	void parse(QVariantMap);
+	void parse(QVariantList);
 	QString getText();
 	int getRetweetCount();
 	QString getTweetId();
