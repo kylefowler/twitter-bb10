@@ -206,10 +206,7 @@ QString KQOAuthRequestPrivate::oauthTimestamp() const {
 
 QString KQOAuthRequestPrivate::oauthNonce() const {
     // This is basically for unit tests only. In most cases we don't set the nonce beforehand.
-	QString str = QString::number(QDateTime::currentDateTimeUtc().toTime_t());
-	str += QString::number(qrand());
-	QByteArray hash = QCryptographicHash::hash(str.toUtf8(),QCryptographicHash::Sha1);
-    return hash.toHex();//QString::number(qrand());
+    return QString::number(qrand());
 }
 
 bool KQOAuthRequestPrivate::validateRequest() const {
@@ -519,6 +516,7 @@ QByteArray KQOAuthRequest::requestBody() const {
         postBodyContent.append(QUrl::toPercentEncoding(key) + QString("=").toUtf8() +
                                QUrl::toPercentEncoding(value));
     }
+    qDebug() << postBodyContent;
     return postBodyContent;
 }
 

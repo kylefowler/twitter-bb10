@@ -17,7 +17,7 @@ TwitterApi::TwitterApi() {
     oauthRequest = new KQOAuthRequest;
     oauthManager = new KQOAuthManager(this);
     //this file should be a file path relative to the assets directory
-    //oauthManager->setSuccessHtmlFile("success.html");
+    oauthManager->setSuccessHtmlFile("success.html");
     oauthRequest->setEnableDebugOutput(true);
 }
 
