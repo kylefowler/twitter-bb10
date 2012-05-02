@@ -41,12 +41,6 @@ void LoginLayout::onButtonClicked()
 		makeLoginRequest();
 	} else {
 		Button *loginButton = root()->findChild<Button*>("login");
-		SequentialAnimation* anim = SequentialAnimation::create(loginButton)
-						.add(TranslateTransition::create(loginButton).toX(100).duration(500).easingCurve(StockCurve::QuadraticOut))
-						.add(TranslateTransition::create(loginButton).toX(-100).duration(500).easingCurve(StockCurve::QuadraticIn))
-						.add(TranslateTransition::create(loginButton).toX(50).duration(500).easingCurve(StockCurve::QuadraticOut))
-						.add(TranslateTransition::create(loginButton).toX(0).duration(500).easingCurve(StockCurve::QuadraticIn));
-		anim->play();
 		RequestEnvelope *env = new RequestEnvelope(ApiResponseObjectFactory::UserObj, TwitterApi::instance()->getUserInfo());
 		connect(env, SIGNAL(requestComplete(AbstractObjectBase*)), this, SLOT(onUserDataLoad(AbstractObjectBase*)));
 		env->makeRequest();
@@ -63,12 +57,6 @@ void LoginLayout::onLoginResponse(bool success) {
 	if(success) {
 		Button *loginButton = root()->findChild<Button*>("login");
 		loginButton->setText("Login Success");
-		SequentialAnimation* anim = SequentialAnimation::create(loginButton)
-						.add(TranslateTransition::create(loginButton).toX(100).duration(500).easingCurve(StockCurve::QuadraticOut))
-						.add(TranslateTransition::create(loginButton).toX(-100).duration(500).easingCurve(StockCurve::QuadraticIn))
-						.add(TranslateTransition::create(loginButton).toX(50).duration(500).easingCurve(StockCurve::QuadraticOut))
-						.add(TranslateTransition::create(loginButton).toX(0).duration(500).easingCurve(StockCurve::QuadraticIn));
-		anim->play();
 		RequestEnvelope *env = new RequestEnvelope(ApiResponseObjectFactory::UserObj, TwitterApi::instance()->getUserInfo());
 		connect(env, SIGNAL(requestComplete(AbstractObjectBase*)), this, SLOT(onUserDataLoad(AbstractObjectBase*)));
 		env->makeRequest();
@@ -83,7 +71,9 @@ void LoginLayout::onUserDataLoad(AbstractObjectBase* user) {
 	disconnect(qobject_cast<RequestEnvelope*>(sender()), SIGNAL(requestComplete(AbstractObjectBase*)), this, SLOT(onUserDataLoad(AbstractObjectBase*)));
 	User* usr = qobject_cast<User*>(user);
 	HomeLayout *home = new HomeLayout(usr);
-	Twitter::instance()->nav->push(home);
+	Page *p = new Page();
+	p->setContent(home);
+	Twitter::instance()->nav->push(p);
 	//Application::setScene(home);
 }
 

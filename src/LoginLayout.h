@@ -14,7 +14,6 @@
 #include <QtNetwork/qnetworkreply.h>
 #include <bb/cascades/Application>
 #include <bb/cascades/Container>
-#include <bb/cascades/NavigationControl>
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/Control>
@@ -23,6 +22,7 @@
 #include <bb/cascades/animation/groupanimation.h>
 #include <bb/cascades/animation/translatetransition.h>
 #include <bb/cascades/animation/stockcurve.h>
+#include <bb/cascades/Page>
 #include "AbstractObjectBase.h"
 #include "Twitter.hpp"
 #include "TwitterApi.h"

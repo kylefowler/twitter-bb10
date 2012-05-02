@@ -1,11 +1,11 @@
-import Cascades 4.0
+import bb.cascades 1.0
 
 Container {
     layout: DockLayout {}
     ImageView {
-        image: "assets://images/background"
-        preferredWidth: 1024
-        preferredHeight: 600
+        image: "assets:///images/background.png"
+        preferredWidth: 768
+        preferredHeight: 1280
     }
     Container {
         layout: StackLayout {}
@@ -13,8 +13,8 @@ Container {
             horizontalAlignment: HorizontalAlignment.Center;
             verticalAlignment: VerticalAlignment.Center
         }
-        preferredWidth: 500
-        preferredHeight: 200
+        preferredWidth: 768
+        preferredHeight: 1280
 	    Button {
 	        id: loginButton
 	        objectName: "login"

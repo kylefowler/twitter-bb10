@@ -1,20 +1,20 @@
-import Cascades 4.0
+import bb.cascades 1.0
 
 Container {
     layout: DockLayout {
             }
     ImageView {
-        image: "assets://images/background"
-        preferredWidth: 1024
-        preferredHeight: 600
+        image: "images/background.png"
+        preferredWidth: 768
+        preferredHeight: 1280
     }
     
     Container {
         layout: StackLayout {
-                layoutDirection: StackLayout.LeftToRight;
-                }
-        preferredWidth: 1024;
-        preferredHeight: 500;
+            layoutDirection: LayoutDirection.TopToBottom;
+        }
+        preferredWidth: 768;
+        preferredHeight: 1280;
         topMargin: 10;
         
 	    Container {
@@ -25,34 +25,41 @@ Container {
 	        topMargin: 10
 	        bottomMargin: 10
 	        leftMargin: 10
-	        preferredWidth: 500
-	        preferredHeight: 500
+	        preferredWidth: 768
+	        preferredHeight: 768
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
-	            font: SystemFont.H2
+	            textStyle {       
+		            base: SystemDefaults.TextStyles.TitleText             
+		            color: Color.Black      
+	                fontWeight: FontWeight.Bold     
+                 }
 	            text: twitterUser.name
-	            textColor: Color.create("#ffffffff")
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
-	            font: SystemFont.H2
+	            textStyle {       
+		            base: SystemDefaults.TextStyles.TitleText             
+		            color: Color.Black      
+	                fontWeight: FontWeight.Bold     
+                 }
 	            text: twitterUser.screenName
-	            textColor: Color.create("#ffffffff")
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
-	            font: SystemFont.H2
+	            textStyle {       
+	            		            base: SystemDefaults.TextStyles.TitleText             
+	            		            color: Color.Black      
+	            	                fontWeight: FontWeight.Bold     
+	                             }
 	            text: twitterUser.url
-	            textColor: Color.create("#ffffffff")
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
-	            font: SystemFont.H2
 	            text: twitterUser.location
-	            textColor: Color.create("#ffffffff")
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
 	        Button {
@@ -73,15 +80,19 @@ Container {
 	        topMargin: 10
 	        bottomMargin: 10
 	        leftMargin: 10
-	        preferredWidth: 500
-	        preferredHeight: 500
+	        preferredWidth: 768
+	        preferredHeight: 768
 	        TextArea {
 	            id: tweetText
 	            objectName: "tweetText"
 	            topMargin: 10; bottomMargin: 10;
-	            preferredWidth: 300;
-	            preferredHeight: 150;
-	            font: SystemFont.H2
+	            preferredWidth: 768;
+	            preferredHeight: 250;
+	            textStyle {       
+		            base: SystemDefaults.TextStyles.TitleText             
+		            color: Color.Black      
+	                fontWeight: FontWeight.Bold     
+                 }
 	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
 	        }
 	        Button {

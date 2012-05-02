@@ -6,9 +6,8 @@
 
 using ::bb::cascades::Application;
 
-int cascades_user_main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-    // this is where the server is started etc
     Application app(argc, argv);
 
     Twitter::instance();
