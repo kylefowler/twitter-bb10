@@ -64,19 +64,19 @@
     
     <!--  The category where the application appears. Either core.games or core.media. -->
     <category>core.games</category>
-    <configuration id="com.qnx.qcc.toolChain.1964894470" name="Default">
+    <configuration id="com.qnx.qcc.toolChain.419701189" name="Default">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/twitter" entry="true" type="Qnx/Elf">twitter</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.1162137858" name="Device-Debug">
+    <configuration id="com.qnx.qcc.toolChain.991594164" name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/twitter" entry="true" type="Qnx/Elf">twitter</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.627811279" name="Device-Release">
+    <configuration id="com.qnx.qcc.toolChain.499878132" name="Device-Release">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7/twitter" entry="true" type="Qnx/Elf">twitter</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.1707782296" name="Simulator-Debug">
+    <configuration id="com.qnx.qcc.toolChain.1343095002" name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
        <asset path="x86/o-g/twitter" entry="true" type="Qnx/Elf">twitter</asset>
     </configuration>
