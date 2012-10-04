@@ -9,9 +9,9 @@ that pulls up the webview to login.  The keyboard does cover the login field
 but I don't believe there is a way to fix that right now (you can still login without seeing it).
 
 When trying to use the OAuth stuff with your project you need to know these things:
-1. Copy the oauth directory into your src folder
-2. Add ../src/oauth/*.cpp to the SOURCES line and ../src/oauth/*.h to your HEADERS line in your .pro file
-3. Put QT += network under your HEADERS line in your .pro file
+* Copy the oauth directory into your src folder
+* Add ../src/oauth/*.cpp to the SOURCES line and ../src/oauth/*.h to your HEADERS line in your .pro file
+* Put QT += network under your HEADERS line in your .pro file
 
 Note: If you don't have internet permissions in your bar-descriptor, thats ok, it still works.  I'm sure its a bug
 so for good practice and future compatibility add this.
