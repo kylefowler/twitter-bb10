@@ -27,8 +27,8 @@ class Twitter : public QObject
 public:
     Twitter();
     ~Twitter();
-    static Twitter* instance();
     NavigationPane* nav;
+    static Twitter* instance();
 private:
     static Twitter* appInstance;
 private slots:

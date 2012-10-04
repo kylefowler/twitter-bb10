@@ -19,11 +19,11 @@ HomeLayout::HomeLayout(User *homeUser) :
 {
 	user = homeUser;
 
-	QmlDocument *qml = QmlDocument::create("twitterhome.qml");
+	QmlDocument *qml = QmlDocument::create("asset:///twitterhome.qml");
 	qml->setContextProperty("homeView", this);
 	qml->setContextProperty("twitterUser", user);
 
-	Control *root = qml->createRootNode<Control>();
+	Control *root = qml->createRootObject<Control>();
 	bb::cascades::CustomControl::setRoot(root);
 }
 

@@ -45,7 +45,8 @@ void TwitterApi::onTemporaryTokenReceived(QString token, QString tokenSecret)
 
     if( oauthManager->lastError() == KQOAuthManager::NoError) {
         qDebug() << "Asking for user's permission to access protected resources. Opening URL: " << userAuthURL;
-        oauthManager->getUserAuthorization(userAuthURL);
+        QUrl openUrl = oauthManager->getUserAuthorization(userAuthURL);
+        emit urlReady(openUrl);
     }
 
 }

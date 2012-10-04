@@ -1,4 +1,4 @@
-QMAKE_TARGET  = foursquare
+QMAKE_TARGET  = twitter
 LUPDATE       = $(QNX_HOST)/usr/bin/lupdate
 LRELEASE      = $(QNX_HOST)/usr/bin/lrelease
 

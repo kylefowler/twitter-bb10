@@ -1,31 +1,53 @@
 import bb.cascades 1.0
 
 Container {
+    id: mainContainer
     layout: DockLayout {}
     ImageView {
-        image: "assets:///images/background.png"
+        imageSource: "asset:///images/background.png"
         preferredWidth: 768
         preferredHeight: 1280
     }
     Container {
-        layout: StackLayout {}
-        layoutProperties: DockLayoutProperties {
-            horizontalAlignment: HorizontalAlignment.Center;
-            verticalAlignment: VerticalAlignment.Center
-        }
+        horizontalAlignment: HorizontalAlignment.Center;
+        verticalAlignment: VerticalAlignment.Center
         preferredWidth: 768
         preferredHeight: 1280
 	    Button {
 	        id: loginButton
 	        objectName: "login"
 	        text: loginLayout.getLoginButtonText()
-	        layoutProperties: StackLayoutProperties {
-	            verticalAlignment: VerticalAlignment.Center
-	            horizontalAlignment: HorizontalAlignment.Center;
-	        }
+	        verticalAlignment: VerticalAlignment.Center
+	        horizontalAlignment: HorizontalAlignment.Center;
 	        onClicked: {
-                 loginLayout.onButtonClicked();
+                 loginLayout.onButtonClicked(webView);
              }
 	    }
     }
+    attachedObjects: [
+            Sheet {
+                id: loginView
+                Page {
+                    titleBar: TitleBar {
+                                  title: "Login"
+                                  visibility: ChromeVisibility.Visible
+                                  
+                                  dismissAction: ActionItem {
+                                                     title: "Done"
+                                                     onTriggered: {
+                                                             loginView.close();
+                                                         }
+                                                 }
+                              }
+                    Container {
+                        WebView {
+                            id: webView
+                            onUrlChanged: {
+                                    loginView.open();
+                                }
+                        }
+                    }    
+                }
+            }
+        ]
 }

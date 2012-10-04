@@ -8,11 +8,11 @@
 #include "LoginLayout.h"
 
 LoginLayout::LoginLayout() {
-    QmlDocument *qml = QmlDocument::create("twitterlogin.qml");
+    QmlDocument *qml = QmlDocument::create("asset:///twitterlogin.qml");
     qml->setContextProperty("loginLayout", this);
 
-    Control *root = qml->createRootNode<Control>();
-    bb::cascades::CustomControl::setRoot(root);
+    Control *root = qml->createRootObject<Control>();
+    this->setRoot(root);
 }
 
 LoginLayout::~LoginLayout() {
@@ -25,19 +25,26 @@ Q_INVOKABLE QString LoginLayout::getLoginButtonText() {
 	return "Login";
 }
 
+void LoginLayout::setUrl(QUrl authUrl) {
+	webView->setUrl(authUrl);
+}
+
 
 void LoginLayout::makeLoginRequest()
 {
 	qDebug() << "Making request";
-	connect(TwitterApi::instance(), SIGNAL(loginComplete(bool)),this,SLOT(onLoginResponse(bool)));
+	connect(TwitterApi::instance(), SIGNAL(loginComplete(bool)), this,
+			SLOT(onLoginResponse(bool)));
 	TwitterApi::instance()->getAccess();
 }
 
-void LoginLayout::onButtonClicked()
+void LoginLayout::onButtonClicked(QObject* InwebView)
 {
 	if(TwitterApi::instance()->checkToken()) {
 		Button *loginButton = root()->findChild<Button*>("login");
 		loginButton->setText("Logging In");
+		webView = qobject_cast<WebView *>(InwebView);
+		connect(TwitterApi::instance(), SIGNAL(urlReady(QUrl)), this, SLOT(setUrl(QUrl)));
 		makeLoginRequest();
 	} else {
 		Button *loginButton = root()->findChild<Button*>("login");
