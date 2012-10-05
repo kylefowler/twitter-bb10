@@ -6,6 +6,7 @@ CONFIG += qt warn_on debug_and_release cascades
 INCLUDEPATH += ../src
 SOURCES += ../src/*.cpp ../src/oauth/*.cpp
 HEADERS += ../src/*.hpp ../src/*.h ../src/oauth/*.hpp ../src/oauth/*.h
+QT += network
 
 lupdate_inclusion {
     SOURCES += ../assets/*.qml
@@ -39,12 +40,3 @@ suredelete.commands = $(DEL_FILE) $${MOC_DIR}/*; $(DEL_FILE) $${RCC_DIR}/*; $(DE
 suredelete.depends = distclean
 
 QMAKE_EXTRA_TARGETS += suredelete
-
-TRANSLATIONS = \
-    $${TARGET}_en_GB.ts \
-    $${TARGET}_fr.ts \
-    $${TARGET}_it.ts \    
-    $${TARGET}_de.ts \
-    $${TARGET}_es.ts \
-    $${TARGET}.ts
-

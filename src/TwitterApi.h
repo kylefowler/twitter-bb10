@@ -15,6 +15,9 @@
 #include <oauth/kqoauthmanager.h>
 #include <oauth/kqoauthrequest_xauth.h>
 #include <oauth/kqoauthrequest.h>
+#include <bb/cascades/WebView>
+
+using namespace bb::cascades;
 
 class TwitterApi : public QObject {
 	Q_OBJECT
@@ -43,6 +46,7 @@ private:
 
 signals:
 	void loginComplete(bool);
+	void urlReady(QUrl);
 
 private slots:
 	void onTemporaryTokenReceived(QString temporaryToken, QString temporaryTokenSecret);

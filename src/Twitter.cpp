@@ -30,7 +30,7 @@ Twitter::Twitter()
 	Page *p = Page::create();
 	p->setContent(first);
 	nav->push(p);
-    Application::setScene(nav);
+	Application::instance()->setScene(nav);
 }
 
 Twitter::~Twitter()

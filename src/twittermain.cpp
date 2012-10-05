@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
     Application app(argc, argv);
 
-    Twitter::instance();
+    Twitter mainApp;
 //    QObject::connect(&app, SIGNAL(aboutToQuit()), &mainApp, SLOT(doCleanup()));
 
     return Application::exec(); // we complete the transaction started in the app constructor and start the client event loop here
