@@ -55,7 +55,7 @@ public:
 private:
     WebView *webView;
 public slots:
-	void onButtonClicked(QObject* webView);
+	void onButtonClicked();
 private slots:
 	void requestComplete(QNetworkReply*);
 	void onLoginResponse(bool);

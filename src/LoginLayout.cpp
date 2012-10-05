@@ -38,12 +38,12 @@ void LoginLayout::makeLoginRequest()
 	TwitterApi::instance()->getAccess();
 }
 
-void LoginLayout::onButtonClicked(QObject* InwebView)
+void LoginLayout::onButtonClicked()
 {
 	if(TwitterApi::instance()->checkToken()) {
 		Button *loginButton = root()->findChild<Button*>("login");
 		loginButton->setText("Logging In");
-		webView = qobject_cast<WebView *>(InwebView);
+		webView = root()->findChild<WebView*>("webView");
 		connect(TwitterApi::instance(), SIGNAL(urlReady(QUrl)), this, SLOT(setUrl(QUrl)));
 		makeLoginRequest();
 	} else {
