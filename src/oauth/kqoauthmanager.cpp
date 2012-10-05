@@ -178,8 +178,9 @@ void KQOAuthManager::executeRequest(KQOAuthRequest *request) {
 
     if (d->autoAuth && d->currentRequestType == KQOAuthRequest::TemporaryCredentials) {
         d->setupCallbackServer();
+        KQOAuthManager* ther = this;
         connect(d->callbackServer, SIGNAL(verificationReceived(QMultiMap<QString, QString>)),
-                this, SLOT( onVerificationReceived(QMultiMap<QString, QString>)));
+                ther, SLOT( onVerificationReceived(QMultiMap<QString, QString>)));
 
         QString serverString = "http://localhost:";
         serverString.append(QString::number(d->callbackServer->serverPort()));
@@ -239,9 +240,9 @@ void KQOAuthManager::executeRequest(KQOAuthRequest *request) {
           reply = d->networkManager->post(networkRequest, request->rawData());
         }
         reply->ignoreSslErrors();
-
+        KQOAuthManager* ther = this;
         connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
-                 this, SLOT(slotError(QNetworkReply::NetworkError)));
+                 ther, SLOT(slotError(QNetworkReply::NetworkError)));
     }
 
     d->r->requestTimerStart();
@@ -341,8 +342,9 @@ void KQOAuthManager::executeAuthorizedRequest(KQOAuthRequest *request, int id) {
 
         d->requestIds.insert(reply, id);
 
+        KQOAuthManager* ther = this;
         connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
-                 this, SLOT(slotError(QNetworkReply::NetworkError)));
+                 ther, SLOT(slotError(QNetworkReply::NetworkError)));
     }
 
     d->r->requestTimerStart();
@@ -437,19 +439,19 @@ void KQOAuthManager::getOauth2UserAuthorization(QUrl authorizationEndpoint, QStr
     navigator_invoke(openWebPageUrl.toString().toStdString().c_str(),0);
 }
 
-void KQOAuthManager::getUserAuthorization(QUrl authorizationEndpoint) {
+QUrl KQOAuthManager::getUserAuthorization(QUrl authorizationEndpoint) {
     Q_D(KQOAuthManager);
 
     if (!d->hasTemporaryToken) {
         qWarning() << "No temporary tokens retreieved. Cannot get user authorization.";
         d->error = KQOAuthManager::RequestUnauthorized;
-        return;
+        return authorizationEndpoint;
     }
 
     if (!authorizationEndpoint.isValid()) {
         qWarning() << "Authorization endpoint not valid. Cannot proceed.";
         d->error = KQOAuthManager::RequestEndpointError;
-        return;
+        return authorizationEndpoint;
     }
 
     d->error = KQOAuthManager::NoError;
@@ -462,7 +464,8 @@ void KQOAuthManager::getUserAuthorization(QUrl authorizationEndpoint) {
     // by the service.
 
     qDebug() << openWebPageUrl.toString();
-    navigator_invoke(openWebPageUrl.toString().toStdString().c_str(),0);
+    return openWebPageUrl;
+    //navigator_invoke(openWebPageUrl.toString().toStdString().c_str(),0);
 }
 
 void KQOAuthManager::getUserAccessTokens(QUrl accessTokenEndpoint) {

@@ -18,6 +18,9 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/Control>
 #include <bb/cascades/Button>
+#include <bb/cascades/Sheet>
+#include <bb/cascades/Page>
+#include <bb/cascades/WebView>
 #include <bb/cascades/TextField>
 #include <bb/cascades/animation/groupanimation.h>
 #include <bb/cascades/animation/translatetransition.h>
@@ -41,7 +44,7 @@ namespace bb
     }
 }
 
-class LoginLayout: public bb::cascades::CustomControl {
+class LoginLayout: public CustomControl {
 	Q_OBJECT
 public:
 	LoginLayout();
@@ -49,12 +52,15 @@ public:
     Button *loginButton;
     void makeLoginRequest();
     Q_INVOKABLE QString getLoginButtonText();
+private:
+    WebView *webView;
 public slots:
 	void onButtonClicked();
 private slots:
 	void requestComplete(QNetworkReply*);
 	void onLoginResponse(bool);
 	void onUserDataLoad(AbstractObjectBase*);
+	void setUrl(QUrl);
 };
 
 #endif /* LOGINLAYOUT_H_ */

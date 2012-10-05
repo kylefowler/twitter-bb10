@@ -4,24 +4,20 @@ Container {
     layout: DockLayout {
             }
     ImageView {
-        image: "images/background.png"
+        imageSource: "asset:///images/background.png"
         preferredWidth: 768
         preferredHeight: 1280
     }
     
     Container {
-        layout: StackLayout {
-            layoutDirection: LayoutDirection.TopToBottom;
-        }
+        layout: StackLayout {}
         preferredWidth: 768;
         preferredHeight: 1280;
         topMargin: 10;
         
 	    Container {
 	        layout: StackLayout {}
-	        layoutProperties: StackLayoutProperties {
-                verticalAlignment: VerticalAlignment.Top
-            }
+            verticalAlignment: VerticalAlignment.Top
 	        topMargin: 10
 	        bottomMargin: 10
 	        leftMargin: 10
@@ -35,7 +31,7 @@ Container {
 	                fontWeight: FontWeight.Bold     
                  }
 	            text: twitterUser.name
-	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	            horizontalAlignment: HorizontalAlignment.Left;
 	        }
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
@@ -45,7 +41,7 @@ Container {
 	                fontWeight: FontWeight.Bold     
                  }
 	            text: twitterUser.screenName
-	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	            horizontalAlignment: HorizontalAlignment.Left;
 	        }
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
@@ -55,17 +51,17 @@ Container {
 	            	                fontWeight: FontWeight.Bold     
 	                             }
 	            text: twitterUser.url
-	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	            horizontalAlignment: HorizontalAlignment.Left;
 	        }
 	        Label {
 	            topMargin: 10; bottomMargin: 10;
 	            text: twitterUser.location
-	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+	            horizontalAlignment: HorizontalAlignment.Left;
 	        }
 	        Button {
 			    objectName: "logoutButton"
 			    text: "Logout"
-			    layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+			    horizontalAlignment: HorizontalAlignment.Left;
 			    onClicked: {
 			        homeView.onLogoutClicked()
 			    }
@@ -74,9 +70,7 @@ Container {
 	    
 	    Container {
 	        layout: StackLayout {}
-	        layoutProperties: StackLayoutProperties {
-                verticalAlignment: VerticalAlignment.Top
-            }
+            verticalAlignment: VerticalAlignment.Top
 	        topMargin: 10
 	        bottomMargin: 10
 	        leftMargin: 10
@@ -93,11 +87,11 @@ Container {
 		            color: Color.Black      
 	                fontWeight: FontWeight.Bold     
                  }
-	            layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+                 horizontalAlignment: HorizontalAlignment.Left;
 	        }
 	        Button {
 			    text: "Tweet!"
-			    layoutProperties: StackLayoutProperties {horizontalAlignment: HorizontalAlignment.Left;}
+			    horizontalAlignment: HorizontalAlignment.Left;
 			    onClicked: {
 			        homeView.onTweetClicked(tweetText.text)
 			    }
