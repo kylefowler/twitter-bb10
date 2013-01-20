@@ -9,7 +9,7 @@
 #include <QtCore/QVariant>
 #include <QtCore/QVariantMap>
 #include <QtCore>
-#include "json.h"
+#include <bb/data/JsonDataAccess>
 
 ApiResponse::ApiResponse(ApiResponseObjectFactory::ApiType targetType) {
 	response = ApiResponseObjectFactory::createApiResponseObject(targetType);
@@ -32,9 +32,9 @@ ApiResponseObjectFactory::ApiType ApiResponse::getType() {
 }
 
 void ApiResponse::parse(QByteArray data) {
-	QString json(data);
 	bool ok;
-	QVariant resp = QtJson::Json::parse(json,ok);
+	bb::data::JsonDataAccess json;
+	QVariant resp = json.loadFromBuffer(data);
 	if(resp.canConvert(QVariant::List)) {
 		foreach(const QVariant &var, resp.toList()) {
 			qDebug() << var;

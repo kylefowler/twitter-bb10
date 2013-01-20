@@ -26,11 +26,11 @@
 
     <!-- A universally unique application identifier. Must be unique across all BlackBerry Tablet OS applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>com.example.twitter</id>
+    <id>com.example.twitter_bb10</id>
 
     <!-- The name that is displayed in the BlackBerry Tablet OS application installer. 
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>twitter</name>
+    <name>twitter-bb10</name>
     
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -46,7 +46,7 @@
 
     <!-- Description, displayed in the BlackBerry Tablet OS application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The twitter application</description>
+    <description>The twitter-bb10 application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
@@ -63,22 +63,23 @@
     </initialWindow>
     
     <!--  The category where the application appears. Either core.games or core.media. -->
-    <category>core.media</category>
-    <configuration id="com.qnx.qcc.toolChain.419701189" name="Default">
+    <category>core.games</category>
+    <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/twitter" entry="true" type="Qnx/Elf">twitter</asset>
+       <asset path="arm/o.le-v7-g/twitter-bb10" entry="true" type="Qnx/Elf">twitter-bb10</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.991594164" name="Device-Debug">
+    <configuration name="Device-Release">
+       <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/twitter" entry="true" type="Qnx/Elf">twitter</asset>
+       <asset path="arm/o.le-v7/twitter_bb10.so" entry="true" type="Qnx/Elf">twitter_bb10.so</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.499878132" name="Device-Release">
+    <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/twitter" entry="true" type="Qnx/Elf">twitter</asset>
+       <asset path="arm-p/o.le-v7-g/twitter_bb10" entry="true" type="Qnx/Elf">twitter_bb10</asset>
     </configuration>
-    <configuration id="com.qnx.qcc.toolChain.1343095002" name="Simulator-Debug">
+    <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
-       <asset path="x86/o-g/twitter" entry="true" type="Qnx/Elf">twitter</asset>
+       <asset path="x86/o-g/twitter_bb10" entry="true" type="Qnx/Elf">twitter_bb10</asset>
     </configuration>
     
     <!--  The icon for the application, which should be 86x86. -->
@@ -88,8 +89,6 @@
 
     <asset path="icon.png">icon.png</asset>
     <asset path="assets">assets</asset>
-    <!--  The splash screen that will appear when your application is launching. Should be 1024x600. -->
-    <!-- <splashscreen></splashscreen> -->
     
     <!-- Locale support -->
     <asset path="translations" dest="qm">
@@ -98,18 +97,6 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
-    <permission>access_internet</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
-
-    <!--  The permissions requested by your application. -->
-    <!--  <action>access_shared</action> -->
-    <!--  <action>record_audio</action> -->
-    <!--  <action>read_geolocation</action> -->
-    <!--  <action>use_camera</action> -->
-    <!--  <action>access_internet</action> -->
-    <!--  <action>play_audio</action> -->
-    <!--  <action>post_notification</action> -->
-    <!--  <action>set_audio_volume</action> -->
-    <!--  <action>read_device_identifying_information</action> -->
 
 </qnx>

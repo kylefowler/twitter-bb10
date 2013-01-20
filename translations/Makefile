@@ -1,4 +1,4 @@
-QMAKE_TARGET  = twitter
+QMAKE_TARGET  = twitter_bb10
 LUPDATE       = $(QNX_HOST)/usr/bin/lupdate
 LRELEASE      = $(QNX_HOST)/usr/bin/lrelease
 
