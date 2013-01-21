@@ -14,3 +14,7 @@
 # device files
 arm/
 x86/
+
+src/.DS_Store
+
+src/.DS_Store
